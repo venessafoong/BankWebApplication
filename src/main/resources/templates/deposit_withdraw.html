@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit and Withdraw Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+        
+        body {
+          margin: 0;
+          box-sizing: border-box;
+        }
+      
+        /* CSS for header */
+        .header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: #f5f5f5;
+        }
+      
+        .header .logo {
+          font-size: 25px;
+          font-family: 'Sriracha', cursive;
+          color: #000;
+          text-decoration: none;
+          margin-left: 30px;
+        }
+      
+        .nav-items {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          background-color: #f5f5f5;
+          margin-right: 20px;
+        }
+      
+        .nav-items a {
+          text-decoration: none;
+          color: #000;
+          padding: 15px 20px;
+        }
+      
+        /* CSS for main element height: 520px;*/
+        .intro {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 250px;
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.5) 100%), url("https://th.bing.com/th/id/OIP.3gdj6nzsmuu1dWpyUytxqAHaCq?w=293&h=125&c=7&r=0&o=5&dpr=2&pid=1.7");
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      
+        .intro h1 {
+          font-family: sans-serif;
+          font-size: 60px;
+          color: #fff;
+          font-weight: bold;
+          text-transform: uppercase;
+          margin: 0;
+        }
+      
+        .intro p {
+          font-size: 20px;
+          color: #d1d1d1;
+          text-transform: uppercase;
+          margin: 20px 0;
+        }
+      
+        .intro button {
+          background-color: #5edaf0;
+          color: #000;
+          padding: 10px 25px;
+          border: none;
+          border-radius: 5px;
+          font-size: 20px;
+          font-weight: bold;
+          cursor: pointer;
+          box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.4)
+        }
+      
+        .achievements {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          padding: 40px 80px;
+        }
+      
+        .achievements .work {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 0 40px;
+        }
+      
+        .achievements .work i {
+          width: fit-content;
+          font-size: 50px;
+          color: #333333;
+          border-radius: 50%;
+          border: 2px solid #333333;
+          padding: 12px;
+        }
+      
+        .achievements .work .work-heading {
+          font-size: 20px;
+          color: #333333;
+          text-transform: uppercase;
+          margin: 10px 0;
+        }
+      
+        .achievements .work .work-text {
+          font-size: 15px;
+          color: #585858;
+          margin: 10px 0;
+        }
+      
+      
+        /* Deposit and Withdraw */
+        .container {
+            display: flex;
+            max-width: 600px;
+            font-size: 20px;
+            margin: auto;
+            padding: 50px;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+        input[type="text"],
+        input[type="number"]
+        {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+          margin-bottom: 16px;
+        }
+      
+        input[type="submit"] {
+            background-color: #302f49;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+      
+          input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+      
+        /* Deposit and Withdraw */
+      
+        /* CSS for footer */
+        .footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: #302f49;
+          padding: 40px 80px;
+        }
+      
+        .footer .copy {
+          color: #fff;
+        }
+      
+        .bottom-links {
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          padding: 40px 0;
+        }
+      
+        .bottom-links .links {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 0 40px;
+        }
+      
+        .bottom-links .links span {
+          font-size: 20px;
+          color: #fff;
+          text-transform: uppercase;
+          margin: 10px 0;
+        }
+      
+        .bottom-links .links a {
+          text-decoration: none;
+          color: #a1a1a1;
+          padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="logo">Deposit and Withdraw</a>
+        <nav class="nav-items">
+          <a th:href="@{/logout}" class="logo">Log out</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="intro">
+            <h1>Power Bank</h1>
+            <p>The bank that gives you more power.</p>
+        </div>
+        <div class="container">   
+            <form th:action="@{/bank_account/deposit_withdraw}" th:method="POST">
+                <label for="accNumber">Account Number</label>
+                <input type="text" id="accNumber" th:name="accNumber" th:value="${user.bankAccount.number}" placeholder="Enter Account No. " readonly required><br>
+                
+                <label for="type">Type</label>
+                <select th:name="type" id="type" required>
+                    <option value="" disabled selected hidden></option>
+                    <option value="deposit">Deposit</option>
+                    <option value="withdraw">Withdraw</option>
+                </select><br><br>
+                
+                <label for="amount">Amount</label>
+                <input type="number" id="amount" th:name="amount"  placeholder="Enter Amount" step="0.01" min=0 required><br>
+    
+                <input type="submit" value="Done"><br><br>
+                <a href="/bank_account">Back to Bank Account Dashboard</a>
+            </form>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="copy">&copy; 2023 Power Bank</div>
+        <div class="bottom-links">
+            <div class="links">
+                <span>More Info</span>
+                <a th:href="@{/dashboard}" class="btn btn-primary">Home</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <!--<div th:if="${error}" th:text="${error}"></div>
+    <form th:action="@{/bank_account/deposit_withdraw}" th:method="POST">
+        <label for="accNumber">Account Number</label>
+        <input type="text" id="accNumber" th:name="accNumber" th:value="${user.bankAccount.number}" readonly required><br>
+        <label for="type">Type</label>
+        <select th:name="type" id="type" required>
+            <option value="" disabled selected hidden></option>
+            <option value="deposit">Deposit</option>
+            <option value="withdraw">Withdraw</option>
+        </select><br>
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" th:name="amount" step="0.01" min=0 required><br>
+        <button type="submit">Done</button>
+    </form>-->
+
+</body>
+</html>
